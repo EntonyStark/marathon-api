@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema(
+const eventUserSchema = new Schema(
 	{
 		name: {
 			required: true,
@@ -17,35 +17,20 @@ const userSchema = new Schema(
 			unique: true,
 			required: true
 		},
-		password: {
-			type: String,
-			required: true
-		},
 		sex: {
 			type: String,
 			required: true,
 			enum: ['male', 'female']
 		},
-		role: {
+		distance: {
 			type: String,
-			required: true,
-			default: 'user',
-			enum: ['user', 'admin']
+			required: true
 		},
-		history: [
-			{
-				type: Schema.Types.ObjectId,
-				ref: 'event'
-			}
-		],
-		result: [
-			{
-				type: Schema.Types.ObjectId,
-				ref: 'result'
-			}
-		]
+		userCountry: {
+			type: String
+		}
 	},
 	{ timestamps: true }
 );
 
-module.exports = mongoose.model('users', userSchema);
+module.exports = mongoose.model('eventUsers', eventUserSchema);

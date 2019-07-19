@@ -2,71 +2,85 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const eventchema = new Schema({
-	title: {
-		type: String,
-		required: true
+const eventchema = new Schema(
+	{
+		title: {
+			type: String,
+			required: true
+		},
+		eventType: {
+			type: String,
+			required: true
+		},
+		country: {
+			type: String,
+			required: true
+		},
+		city: {
+			type: String,
+			required: true
+		},
+		eventDate: {
+			type: Date,
+			required: true
+		},
+		mainBannerPicture: {
+			type: String
+		},
+		overview: {
+			type: String
+		},
+		contentPicture: {
+			type: String
+		},
+		contentVideo: {
+			type: String
+		},
+		marathoneDistancePrice: {
+			type: Number
+		},
+		halfmarathoneDistancePrice: {
+			type: Number
+		},
+		ageLimit: {
+			type: Number
+		},
+		awardMedals: {
+			type: String,
+			required: true
+		},
+		maximumTime: {
+			type: Number
+		},
+		aidStations: {
+			type: String
+		},
+		equipmentStorage: {
+			type: String
+		},
+		parking: {
+			type: String
+		},
+		refreshments: {
+			type: String
+		},
+		map: {
+			type: String
+		},
+		users: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'eventUsers'
+			}
+		],
+		result: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'result'
+			}
+		]
 	},
-	eventType: {
-		type: String,
-		required: true
-	},
-	country: {
-		type: String,
-		required: true
-	},
-	city: {
-		type: String,
-		required: true
-	},
-	eventDate: {
-		type: Date,
-		required: true
-	},
-	mainBannerPicture: {
-		type: String
-	},
-	overview: {
-		type: String
-	},
-	contentPicture: {
-		type: String
-	},
-	contentVideo: {
-		type: String
-	},
-	marathoneDistancePrice: {
-		type: Number
-	},
-	halfmarathoneDistancePrice: {
-		type: Number
-	},
-	ageLimit: {
-		type: Number
-	},
-	awardMedals: {
-		type: Boolean,
-		required: true
-	},
-	maximumTime: {
-		type: Number
-	},
-	aidStations: {
-		type: Boolean
-	},
-	equipmentStorage: {
-		type: Boolean
-	},
-	parking: {
-		type: Boolean
-	},
-	refreshments: {
-		type: Boolean
-	},
-	map: {
-		type: String
-	}
-
-}, { timestamps: true });
+	{ timestamps: true }
+);
 
 module.exports = mongoose.model('events', eventchema);
