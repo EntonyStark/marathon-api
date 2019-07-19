@@ -9,7 +9,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 const { mongoDBUrl, secretKey } = require('./config');
-const { authenticationMiddleware } = require('./utils/help-func');
+// const { authenticationMiddleware } = require('./utils/help-func');
 
 const urls = ['http://localhost:3000'];
 
@@ -53,7 +53,7 @@ app.use(bodyParser.json());
 
 // routes
 const auth = require('./routes/auth');
-// const user = require('./routes/user');
+const event = require('./routes/event');
 // const services = require('./routes/services');
 // const doctors = require('./routes/doctors');
 // const shedule = require('./routes/shedule');
@@ -61,7 +61,7 @@ const auth = require('./routes/auth');
 // const reviews = require('./routes/reviews');
 
 app.use('/api/v1/auth', auth);
-// app.use('/api/v1/users', authenticationMiddleware, user);
+app.use('/api/v1/event', event);
 // app.use('/api/v1/services', authenticationMiddleware, services);
 // app.use('/api/v1/doctors', authenticationMiddleware, doctors);
 // app.use('/api/v1/shedule', authenticationMiddleware, shedule);
