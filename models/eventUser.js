@@ -28,7 +28,13 @@ const eventUserSchema = new Schema(
 		},
 		userCountry: {
 			type: String
-		}
+		},
+		event: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'events'
+			}
+		]
 	},
 	{ timestamps: true }
 );

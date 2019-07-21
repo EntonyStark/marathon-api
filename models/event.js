@@ -67,12 +67,6 @@ const eventchema = new Schema(
 		map: {
 			type: String
 		},
-		users: [
-			{
-				type: Schema.Types.ObjectId,
-				ref: 'eventUsers'
-			}
-		],
 		result: [
 			{
 				type: Schema.Types.ObjectId,
