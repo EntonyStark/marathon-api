@@ -10,7 +10,8 @@ const eventchema = new Schema(
 		},
 		eventType: {
 			type: String,
-			required: true
+			required: true,
+			enum: ['Triathlon', 'Marathon', 'Cycling']
 		},
 		country: {
 			type: String,

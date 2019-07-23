@@ -6,8 +6,11 @@ const { authenticationMiddleware, isAdmin } = require('../utils/help-func');
 const router = express.Router();
 
 router.get('/', eventUser.getEventUsers);
-router.post('/', authenticationMiddleware, isAdmin, eventUser.createEventUser);
-router.put('/:id', authenticationMiddleware, isAdmin, eventUser.updateEventUser);
-router.delete('/:id', authenticationMiddleware, isAdmin, eventUser.removeEventUser);
+// router.post('/', authenticationMiddleware, isAdmin, eventUser.createEventUser);
+// router.put('/:id', authenticationMiddleware, isAdmin, eventUser.updateEventUser);
+// router.delete('/:id', authenticationMiddleware, isAdmin, eventUser.removeEventUser);
+router.post('/', eventUser.createEventUser);
+router.put('/:id', eventUser.updateEventUser);
+router.delete('/:id', eventUser.removeEventUser);
 
 module.exports = router;
