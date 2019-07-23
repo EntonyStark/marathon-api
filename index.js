@@ -70,7 +70,7 @@ const auth = require('./routes/auth');
 const event = require('./routes/event');
 const eventUsers = require('./routes/eventUser');
 const users = require('./routes/users');
-// const shedule = require('./routes/shedule');
+const gallery = require('./routes/gallery');
 // const orders = require('./routes/orders');
 // const reviews = require('./routes/reviews');
 
@@ -78,7 +78,7 @@ app.use('/api/v1/auth', auth);
 app.use('/api/v1/event', event);
 app.use('/api/v1/eventUsers', eventUsers);
 app.use('/api/v1/users', users);
-// app.use('/api/v1/shedule', authenticationMiddleware, shedule);
+app.use('/api/v1/gallery', gallery);
 // app.use('/api/v1/orders', authenticationMiddleware, orders);
 // app.use('/api/v1/reviews', authenticationMiddleware, reviews);
 

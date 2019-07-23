@@ -38,20 +38,19 @@ const eventchema = new Schema(
 			type: String
 		},
 		marathoneDistancePrice: {
-			type: Number
+			type: String
 		},
 		halfmarathoneDistancePrice: {
-			type: Number
+			type: String
 		},
 		ageLimit: {
-			type: Number
+			type: String
 		},
 		awardMedals: {
-			type: String,
-			required: true
+			type: String
 		},
 		maximumTime: {
-			type: Number
+			type: String
 		},
 		aidStations: {
 			type: String
