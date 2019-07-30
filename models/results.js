@@ -4,23 +4,9 @@ const { Schema } = mongoose;
 
 const resultSchema = new Schema(
 	{
-		name: {
-			required: true,
-			type: String
-		},
-		email: {
-			type: String,
-			unique: true,
-			required: true
-		},
-		sex: {
-			type: String,
-			required: true,
-			enum: ['male', 'female']
-		},
-		distance: {
-			type: String,
-			required: true
+		eventUser: {
+			type: Schema.Types.ObjectId,
+			ref: 'eventUsers'
 		},
 		time: {
 			type: String,
@@ -29,6 +15,10 @@ const resultSchema = new Schema(
 		rating: {
 			type: String,
 			required: true
+		},
+		event: {
+			type: Schema.Types.ObjectId,
+			ref: 'events'
 		}
 	},
 	{ timestamps: true }

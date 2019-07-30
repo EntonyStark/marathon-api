@@ -23,7 +23,7 @@ module.exports = {
 	},
 	register: async (req, res) => {
 		const {
-			name, sex, email, phone, password, confirmPassword, distance
+			name, sex, email, phone, password, confirmPassword
 		} = req.body;
 		const user = await User.findOne({ email });
 		if (user) return res.status(400).send({ message: 'User already exist' });
@@ -39,8 +39,7 @@ module.exports = {
 			sex,
 			email,
 			phone,
-			password: hashPass,
-			distance
+			password: hashPass
 		}).save());
 
 		if (err) return res.status(400).send({ error: err.message });

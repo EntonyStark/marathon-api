@@ -5,7 +5,9 @@ const { findOneAndUpdateConfig } = require('../config/constants');
 
 module.exports = {
 	getEvents: async (req, res) => {
-		const [err, events] = await to(Event.find(req.query, { __v: 0 }));
+		const [err, events] = await to(Event
+			.find(req.query, { __v: 0 })
+			.populate({ path: 'result', select: { time: 1, rating: 1 }, populate: { path: 'eventUser', select: { email: 1, name: 1 } } }));
 		if (err) return res.status(400).send({ message: err.message });
 
 		return res.status(200).send({ events });
