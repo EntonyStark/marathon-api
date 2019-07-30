@@ -1,4 +1,5 @@
 const Event = require('../models/event');
+const FeedBack = require('../models/feedback');
 const { to } = require('../utils/help-func');
 
 const { findOneAndUpdateConfig } = require('../config/constants');
@@ -32,6 +33,9 @@ module.exports = {
 		));
 		if (err) return res.status(400).send({ message: err.message });
 		if (!event) return res.status(400).send({ message: 'Change not saved' });
+
+		const fb = await FeedBack.find({ event: event._id });
+		fb.forEach(el => el.remove());
 
 		return res.status(200).send({ message: `${event.title} successfully removed`, id: event._id });
 	}
