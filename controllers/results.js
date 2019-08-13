@@ -14,8 +14,9 @@ module.exports = {
 	},
 	createResult: async (req, res) => {
 		const [e, dublicate] = await to(Results.find({ eventUser: req.body.eventUser }));
+
 		if (e) return res.status(400).send({ message: e.message });
-		if (dublicate) return res.status(400).send({ message: 'Result for this user already exist in event' });
+		if (dublicate.length !== 0) return res.status(400).send({ message: 'Result for this user already exist in event' });
 
 		const [err, results] = await to(new Results({ ...req.body }).save());
 		if (err) return res.status(400).send({ message: err.message });
