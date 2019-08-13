@@ -13,8 +13,7 @@ const resultSchema = new Schema(
 			required: true
 		},
 		rating: {
-			type: String,
-			required: true
+			type: String
 		},
 		event: {
 			type: Schema.Types.ObjectId,
