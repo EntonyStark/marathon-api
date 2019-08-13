@@ -13,21 +13,22 @@ module.exports = {
 		return res.status(200).send({ results });
 	},
 	createResult: async (req, res) => {
-		const [e, dublicate] = await to(Results.find({ eventUser: req.body.eventUser }));
+		try {
+			const dublicate = await Results.find({ eventUser: req.body.eventUser });
+			if (dublicate.length !== 0) throw new Error('Result for this user already exist in event');
 
-		if (e) return res.status(400).send({ message: e.message });
-		if (dublicate.length !== 0) return res.status(400).send({ message: 'Result for this user already exist in event' });
+			const results = await new Results({ ...req.body }).save();
+			const event = await Event.findById({ _id: req.body.event });
 
-		const [err, results] = await to(new Results({ ...req.body }).save());
-		if (err) return res.status(400).send({ message: err.message });
+			event.result.push(results);
 
-		const event = await Event.findById({ _id: req.body.event });
+			await event.save();
 
-		event.result.push(results);
-
-		await event.save();
-
-		return res.status(200).send({ results });
+			return res.status(200).send({ results });
+		}
+		catch (error) {
+			return res.status(400).send({ error: error.message });
+		}
 	},
 	updateResult: async (req, res) => {
 		const { time, rating } = req.body;
