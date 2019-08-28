@@ -10,7 +10,7 @@ const MongoStore = require('connect-mongo')(session);
 
 const { mongoDBUrl, secretKey } = require('./config');
 
-const urls = ['http://localhost:3000', 'https://react-triathlon.herokuapp.com/'];
+const urls = ['http://localhost:3000', 'https://react-triathlon.herokuapp.com'];
 
 const app = express();
 app.use(
